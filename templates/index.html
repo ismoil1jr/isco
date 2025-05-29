@@ -1,0 +1,53 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h2>Hi, I'm Ismoil</h2>
+      <p>Junior Python/Django Backend Developer</p>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>I am a junior backend developer with experience in Python and Django. I'm passionate about building clean and efficient backend systems.</p>
+  </section>
+
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Blog App</h3>
+        <p>A simple Django blog app with user auth, CRUD posts, and comments.</p>
+        <a href="#">GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>ToDo API</h3>
+        <p>REST API for managing tasks using Django Rest Framework.</p>
+        <a href="#">GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Weather App</h3>
+        <p>Weather forecast web app using external API and Django templates.</p>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <form method="post">
+      {% csrf_token %}
+      {% include 'f.html' %}
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+{% endblock %}
