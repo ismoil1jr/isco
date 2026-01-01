@@ -1,174 +1,365 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ismoil Erkinov - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in-up {
-            animation: fadeInUp 1s ease-out forwards;
-        }
-        .hover-scale:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-        }
-        .bg-gradient-hero {
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-        }
-        .scroll-smooth {
-            scroll-behavior: smooth;
-        }
-    </style>
+    <title>Isco🩶</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:wght@300..800&family=Playfair+Display:wght@400..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="bg-gray-900 text-white scroll-smooth">
-    <!-- Navbar -->
-    <nav class="bg-gray-800 fixed w-full z-10 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="text-2xl font-bold">Ismoil Erkinov</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="hover:text-blue-400">Home</a>
-                    <a href="#about" class="hover:text-blue-400">About</a>
-                    <a href="#skills" class="hover:text-blue-400">Skills</a>
-                    <a href="#projects" class="hover:text-blue-400">Projects</a>
-                    <a href="#contact" class="hover:text-blue-400">Contact</a>
-                </div>
-                <div class="md:hidden">
-                    <button id="menu-btn" class="text-white focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden bg-gray-800">
-            <div class="flex flex-col space-y-4 px-4 py-4">
-                <a href="#home" class="hover:text-blue-400">Home</a>
-                <a href="#about" class="hover:text-blue-400">About</a>
-                <a href="#skills" class="hover:text-blue-400">Skills</a>
-                <a href="#projects" class="hover:text-blue-400">Projects</a>
-                <a href="#contact" class="hover:text-blue-400">Contact</a>
-            </div>
-        </div>
-    </nav>
+<body>
+    <div id="loading-screen">
+  <div class="loading-content">
+    <i class="fa-solid fa-laptop-code fa-5x main-icon hidden"></i>
 
-    <!-- Hero Section -->
-    <section id="home" class="bg-gradient-hero h-screen flex items-center justify-center">
-        <div class="text-center fade-in-up">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Ismoil Erkinov</h1>
-            <p class="text-xl md:text-2xl mb-6">Junior Backend Developer | Building Scalable Solutions</p>
-            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full hover-scale">Get in Touch</a>
+    <h1 id="loading-text" class="hidden">MY PROFILE</h1>
+
+    <div class="sub-icons">
+      <i class="fa-brands fa-github fa-2x hidden"></i>
+      <i class="fa-solid fa-code fa-2x hidden"></i>
+      <i class="fa-solid fa-user fa-2x hidden"></i>
+    </div>
+
+    <h2 id="designer-text" class="hidden"></h2>
+  </div>
+</div>  
+    <header class="header-list">
+        
+        <div class="div-list ">
+            <ul class="ul-list">
+                <li class="active">
+                    <i class="fa-regular fa-house"></i>
+                    <a href="#home">Home</a>
+                </li>
+                <li>
+                    <i class="fa-regular fa-address-card"></i>
+                    <a href="#about">About</a>
+                </li>
+                <li>
+                    <i class="fa-regular fa-folder-open"></i>
+                    <a href="#project">Projects</a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-code"></i>
+                    <a href="#services">services</a>
+                </li>
+                <li>
+                    <i class="fa-regular fa-envelope"></i>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    
+    <!-- home -->
+    <section class="home" id="home">
+        <p class="home-p">
+            <span class="home-s">. </span>Available for freelance work
+        </p>
+        <div class="home-container">
+        <div class="home-section">
+            <div class="info-home">
+                <h1>Hi, I’m Isco (Ismail)</h1>
+                <h3>Backend Developer</h3>
+                <div class="info-p">
+                   <p> I build reliable, scalable, and efficient backend systems.
+                    With 2+ years of experience in web development, I turn ideas
+                    into real-world applications using clean code and solid architecture.</p>
+                </div>
+                <div class="info-p2">
+                    <p><i class="fa-solid fa-location-dot"></i> Based in Uzbekistan</p>
+                    <p><i class="fa-solid fa-briefcase"></i> Open to Work<p>
+                </div>
+                <div class="btnn">
+                    <button class="btn-home1"><i class="fa-solid fa-arrow-right"></i> Hire Me</button>
+                    <button class="btn-home2"><i class="fa-solid fa-download"></i> Download CV</button>
+                </div>
+                <div class="hhr">
+                    <hr>
+                </div>
+                <div class="follow">
+                    <p class="followw">Follow me:</p>
+                    <ul>
+                        <li><a href="https://github.com/ismoil1jr"><i class="fa-brands fa-github"></i></a></li>
+                        <li><a href="https://discord.com/isco.712_05145"><i class="fa-brands fa-discord"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/ismoil-erkinov-b01844336/"><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                        <li><a href="https://instagram.com/erk1nv.712"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://t.me/erknvv_712"><i class="fa-brands fa-telegram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+          <img src="{% static 'images/isco.png' %}" alt="isco image">
         </div>
     </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl font-bold text-center mb-12 fade-in-up">About Me</h2>
-        <div class="flex flex-col md:flex-row items-center gap-8">
-            <div class="md:w-1/2 fade-in-up">
-                <img src="{{ about.imageURL }}" alt="Ismoil Erkinov" class="rounded-full w-64 h-64 mx-auto hover-scale">
-            </div>
-            <div class="md:w-1/2 fade-in-up">
-                <p class="text-lg mb-4">{{ about.text }}</p>
-            </div>
+    <!-- fine home  -->
+     <section class="about" id="about" >
+        <p id="about">ABOUT ME</p>
+        <div class="title">
+        <h1>Building Meaningful</h1>
+        <h1>Digital Experiences</h1>
         </div>
-    </section>
+        <div class="hrrr">
+            <hr>
+        </div>
+        <div class="about-container">
+            <div class="info-about">
+            <div class="about-info">
+                <p>
+                    I’m a backend-focused developer with a strong passion for building reliable, efficient, and scalable web systems.
+                    <br>While many see code as just syntax, I see it as a tool to solve real problems — cleanly, logically, and without unnecessary complexity.<br>
 
-    <!-- Skills Section -->
-    <section id="skills" class="bg-gray-800 py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-12 fade-in-up">Skills</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center hover-scale fade-in-up">
-                  <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python" class="w-16 h-16 mx-auto mb-4" />
-                  <p>Python</p>
-                </div>              
-                <div class="text-center hover-scale fade-in-up">
-                  <img src="https://cdn.worldvectorlogo.com/logos/django.svg" alt="Django" class="w-16 h-16 mx-auto mb-4" />
-                  <p>Django</p>
-                </div>                
-                <div class="text-center hover-scale fade-in-up">
-                    <i class="fas fa-database text-4xl text-yellow-400 mb-4"></i>
-                    <p>SQLite</p>
+                </p>
+                <p>
+                    My journey into development started with curiosity and quickly turned into discipline.<br>
+                    <br>I enjoy understanding how things work under the hood: authentication, APIs, background tasks, databases, and system architecture. I believe good software is not just about working code, but about maintainability, performance, and clarity.<br>
+                    <br>When I’m not coding, I’m improving my existing projects, learning new technologies, and questioning better ways to design systems that scale — because “it works” is never the final goal.
+                    I value consistency, responsibility, and writing code that I’d be proud to revisit months later.
+                </p>
+            </div>
+            <h2>What Drives Me</h2>
+            <div class="card">
+                <div class="c1">
+                    <h3><i class="fa-solid fa-code"></i> Technologies</h3>
+                    <p>PYTHON,DJANGO,DRF,SQL,DOCKER</p>
                 </div>
-                <div class="text-center hover-scale fade-in-up">
-                    <i class="fab fa-git-alt text-4xl text-red-400 mb-4"></i>
-                    <p>Git</p>
+                <div class="c1">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+                    <p> Computer Science student at USTHB, focused on backend development and system design</p>
                 </div>
-                <div class="text-center hover-scale fade-in-up">
-                    <i class="fab fa-telegram text-4xl text-blue-500 mb-4"></i>
-                    <p>Telegram Bots</p>
+            <div class="c1">
+                    <h3><i class="fa-solid fa-folder-open"></i> Projects</h3>
+                    <p> Developed 5+ real-world projects, from REST APIs to full backend systems</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl font-bold text-center mb-12 fade-in-up">Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {% for p in project %}
-            <div class="bg-gray-800 p-6 rounded-lg hover-scale fade-in-up">
-                <img src="{{ p.imageURL }}" alt="Lugx Gaming Shop" class="w-full h-48 object-cover rounded mb-4">
-                <h3 class="text-2xl font-bold mb-2">{{ p.name }}</h3>
-                <p class="mb-4"></p>
-                <a href="{{ p.url }}" class="text-blue-400 hover:underline">View Project</a>
-            </div>
-          {% endfor %}
+        <img src="{% static 'images/ANIMEisco.png' %}" alt="">
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="bg-gradient-hero py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-12 fade-in-up">Contact Me</h2>
-            <div class="flex justify-center">
-                <a href="https://t.me/erkinov_dev" target="_blank" class="hover-scale fade-in-up">
-                    <i class="fab fa-telegram text-6xl text-blue-400 hover:text-blue-600"></i>
-                </a>
-            </div>
-            <p class="text-center text-lg mt-4 fade-in-up">Hamkorlik yoki savollar uchun Telegram orqali menga murojaat qiling!</p>
+     </section>
+     <section class="project" id="project">
+        <p>PROJECTS</p>
+        <h1>Featured Work</h1>
+        <hr>
+        <div class="info-pro">
+            <p>A showcase of my recent projects demonstrating expertise in full-stack </p>
+            <p>development, modern frameworks, and creative problem-solving.</p>
         </div>
-    </section>
+        <div class="projects-container">
+            {% for project in project %}
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 py-6 text-center">
-        <p>&copy; 2025 Ismoil Erkinov. All rights reserved.</p>
-    </footer>
+                <div class="project-card">
+                {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.name }}">
+                {% endif %}
+                <h3>{{ project.name }}</h3>
+                <p>{{ project.description }}</p>
+                <div class="skills">
+                    <a href="#">{{ project.language }}</a>
+                </div>
+                <div class="btns">
+                    {% if project.github_link %}
+                    <a href="{{ project.github_link }}" class="btn" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                {% endif %}
+                {% if project.link %}
+                    <a href="{{ project.link }}" class="btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                {% endif %}
+                </div>
+                
+                
+                </div>
+                {% empty %}
+                    <p>No projects found.</p>
+            {% endfor %}
+<!-- 
+    <div class="project-card">
+      <img src="{% static 'images/Capture d'écran 2025-10-22 182207.png" alt="Portfolio Website">
+      <h3>Portfolio Website</h3>
+      <p>Personal portfolio to showcase my design and coding projects.</p>
+      <div class="skills">
+        <a href="#">HTML</a>
+        <a href="#">CSS</a>
+        <a href="#">Bootstrap</a>
+      </div>
+      <div class="btns">
+        <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+      </div>
+    </div>
 
-    <script>
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    <div class="project-card">
+      <img src="{% static 'images/Weather Forecast Dashboard.jpg" alt="Weather App">
+      <h3>Weather App</h3>
+      <p>Responsive app showing real-time weather data using API integration.</p>
+      <div class="skills">
+        <a href="#">HTML</a>
+        <a href="#">CSS</a>
+        <a href="#">API</a>
+      </div>
+      <div class="btns">
+        <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+      </div>
+    </div>
 
-        // Smooth Scroll for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+    <div class="project-card">
+      <img src="{% static 'images/WordPress dashboard design concept.jpg" alt="Blog Website">
+      <h3>Blog Website</h3>
+      <p>Clean and simple blogging platform with markdown support.</p>
+      <div class="skills">
+        <a href="#">HTML</a>
+        <a href="#">Tailwind</a>
+        <a href="#">JavaScript</a>
+      </div>
+      <div class="btns">
+        <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+      </div>
+    </div>
 
-        // Fade-in Animation on Scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
-                }
-            });
-        });
-        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-    </script>
+    <div class="project-card">
+      <img src="{% static 'images/Game Dashboard Design.jpg" alt="Game Landing Page">
+      <h3>Game Landing Page</h3>
+      <p>Landing page for a game with animations and parallax effects.</p>
+      <div class="skills">
+        <a href="#">HTML</a>
+        <a href="#">CSS</a>
+        <a href="#">GSAP</a>
+      </div>
+      <div class="btns">
+        <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="{% static 'images/Task manager app.jpg" alt="Task Manager">
+      <h3>Task Manager</h3>
+      <p>Task tracking web app with CRUD features and clean UI.</p>
+      <div class="skills">
+        <a href="#">HTML</a>
+        <a href="#">CSS</a>
+        <a href="#">JS</a>
+      </div>
+      <div class="btns">
+        <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+      </div>
+    </div> -->
+  </div>
+     </section>
+     <section class="services" id="services">
+        <p>SERVICES</p>
+        <h1>Our Features & Services</h1>
+        <hr>
+        <div class="services-container">
+
+    <div class="service-card">
+      <img src="{% static 'images/web.svg' %}" alt="Web Development">
+      <h3>Web Development</h3>
+      <p>I build fast, secure, and scalable web applications with a strong focus on backend logic, performance, and clean architecture. From APIs to full-stack solutions, I turn ideas into reliable products.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="{% static 'images/app.svg' %}" alt="App Development">
+      <h3>App Development</h3>
+      <p>I develop backend systems that power modern mobile and web applications. My focus is on robust APIs, authentication, and seamless data flow that keeps apps stable and scalable.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="{% static 'images/dm.svg' %}" alt="Digital Marketing">
+      <h3>Digital Marketing</h3>
+      <p>I help products grow by building systems that support analytics, SEO-friendly structures, and conversion-focused web performance — because good marketing needs solid technology behind it.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="{% static 'images/seo.svg' %}" alt="Email Marketing">
+      <h3>Email Marketing</h3>
+      <p>I design and implement automated email systems for notifications, verification, and user engagement using reliable backend workflows and background tasks.</p>
+    </div>
+
+  </div>
+     </section>
+     <section class="contact" id="contact">
+        <p>CONTACT</p>
+        <h1>Get in Touch with Us</h1>
+        <div class="contact-content">
+      <div class="contact-info slide-in-left">
+        <p>I’m always open to discussing new projects, backend challenges, and long-term opportunities.
+            If you have an idea or need a reliable developer, let’s talk.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>ismoildev1@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>+998 XX XXX XX XX</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Uzbekistan, Tashkent</span>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://github.com/ismoil1jr" class="social-link" target="_blank">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/ismoil-erkinov-b01844336/" class="social-link" target="_blank">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="https://t.me/erknvv_712" class="social-link" target="_blank">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+          <a href="https://instagram.com/erk1nv.712"></a>
+        </div>
+      </div>
+
+      <div class="contact-form slide-in-right">
+        <form id="contact-form" method="post">
+            {% csrf_token %}
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required name="user_name">
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your Email" required name="user_email">
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn-send">Send Message</button>
+        </form>
+      </div>
+    </div>
+     </section>
+     <footer class="footer">
+  <div class="footer-container">
+    <h2 class="footer-logo">Isco🩶</h2>
+    <ul class="footer-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#project">Projects</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="https://github.com/ismoil1jr" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/ismoil-erkinov-b01844336/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://t.me/erknvv_712" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-telegram"></i></a>
+    </div>
+    <p class="footer-copy">&copy; 2025 Isco. All Rights Reserved.</p>
+  </div>
+</footer>
+
+     <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

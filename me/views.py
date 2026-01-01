@@ -1,40 +1,70 @@
 from django.shortcuts import render
-from .models import About, Project, VisitorInfo
-import uuid
+from django.http import JsonResponse
+from django.conf import settings
+from .models import AboutMe, Project, ContactMessage
+import requests
 
 
 def index(request):
-    about = About.objects.last()
-    project = Project.objects.all()
+    about = AboutMe.objects.last()
+    projects = Project.objects.all()
 
     context = {
-        'about':about,
-        'project':project,
+        "about": about,
+        "project": projects,
+    }
+    return render(request, "index.html", context)
+
+
+def contact_submit(request):
+    if request.method != "POST":
+        return JsonResponse({"success": False, "message": "Invalid request"}, status=405)
+
+    name = request.POST.get("user_name")
+    email = request.POST.get("user_email")
+    message_text = request.POST.get("message")
+
+    if not all([name, email, message_text]):
+        return JsonResponse(
+            {"success": False, "message": "All fields are required."},
+            status=400
+        )
+
+    message = ContactMessage.objects.create(
+        name=name,
+        email=email,
+        message=message_text
+    )
+
+    try:
+        sent = send_to_telegram(message)
+        if sent:
+            message.is_sent_to_telegram = True
+            message.save()
+    except Exception as e:
+        # Telegram ishlamasa ham sayt yiqilmasin
+        print("Telegram error:", e)
+
+    return JsonResponse({"success": True})
+
+
+def send_to_telegram(message):
+    text = (
+        "📩 NEW CONTACT MESSAGE\n\n"
+        f"👤 Name: {message.name}\n"
+        f"📧 Email: {message.email}\n\n"
+        f"💬 Message:\n{message.message}"
+    )
+
+    url = f"https://api.telegram.org/bot{settings.TELEGRAM_BOT_TOKEN}/sendMessage"
+
+    payload = {
+        "chat_id": settings.TELEGRAM_CHAT_ID,
+        "text": text,
+        "parse_mode": "HTML",
     }
 
-    return render(request,'index.html',context)
+    response = requests.post(url, json=payload, timeout=5)
+    response.raise_for_status()
 
-
-def save_visitor_info(request):
-    ip = get_client_ip(request)
-    user_agent = request.META.get('HTTP_USER_AGENT', '')
-    VisitorInfo.objects.create(ip_address=ip, user_agent=user_agent)
-    
-
-def get_client_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
-
-
-def get_mac_address():
-    mac = uuid.getnode()
-    return ':'.join(("%012X" % mac)[i:i+2] for i in range(0, 12, 2))
-
-
-
-
-
+    return True

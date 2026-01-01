@@ -1,55 +1,54 @@
 from django.db import models
 
+class AboutMe(models.Model):
+    name = models.CharField(max_length=100,blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
+    profile_picture = models.ImageField(upload_to='profile_pics/',blank=True, null=True)
 
-
-class About(models.Model):
-    image = models.ImageField(upload_to='About_img/')
-    text = models.TextField()
-
-    @property
-    def imageURL(self):
-        if self.image:
-            return self.image.url
-        else:
-            return None
+    def __str__(self):
+        return self.name
 
 
 class Project(models.Model):
-    image = models.ImageField('Project_img/')
-    name = models.CharField(max_length=50)
-    text = models.CharField(max_length=100)
-    url = models.URLField()
+    choice_language = [
+        ('Python', 'Python'),
+        ('JavaScript', 'JavaScript'),
+        ('Java', 'Java'),
+        ('C++', 'C++'),
+        ('Ruby', 'Ruby'),
+        ('Go', 'Go'),
+        ('PHP', 'PHP'),
+        ('C#', 'C#'),
+        ("HTML/CSS", "HTML/CSS"),
+        ('Other', 'Other'),
 
-    @property
-    def imageURL(self):
-        if self.image:
-            return self.image.url
-        return ''
+    ]
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    link = models.URLField(blank=True, null=True)
+    github_link = models.URLField(blank=True, null=True)
+    image = models.FileField(upload_to='project_images/')
+    language = models.CharField(max_length=50, choices=choice_language, default='Python')
 
 
-class VisitorInfo(models.Model):
-    ip_address = models.GenericIPAddressField()
-    mac_address = models.CharField(max_length=50, blank=True, null=True)  # MAC olish ko'proq advanced ish
-    user_agent = models.TextField()
-    timestamp = models.DateTimeField(auto_now_add=True)
+    
 
     def __str__(self):
-        return f"{self.ip_address} | {self.timestamp.strftime('%Y-%m-%d %H:%M:%S')}"
+        return self.name
 
 
+from django.db import models
 
 
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_sent_to_telegram = models.BooleanField(default=False)
 
-
-
-
-
-
-
-
-
-
-
+    def __str__(self):
+        return f"{self.name} - {self.email}"
 
 
 
